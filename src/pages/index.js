@@ -9,11 +9,20 @@ import styled from "styled-components"
 const BlogLink = styled(Link)`
   text-decoration: none;
 `
+const GoToLink = styled(Link)`
+  text-decoration: none;
+  color: #7b00ff;
+  font-size: small;
+  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+`
 
 const BlogTitle = styled.h3`
   margin-bottom: 20px;
-  color: blue;
+  color: #ff0084;
 `
+
 
 export default ({ data }) => { 
   return (
@@ -29,8 +38,7 @@ export default ({ data }) => {
              <BlogTitle>{node.frontmatter.title} - { node.frontmatter.date}</BlogTitle>
             </BlogLink>
           <p>{node.excerpt}</p>
-       
-          <Link to={node.fields.slug}>Go to blog</Link>
+          <GoToLink to={node.fields.slug}>Go to blog</GoToLink>
           <p>Time to read: {node.timeToRead}</p>
           </div>
       ))}
