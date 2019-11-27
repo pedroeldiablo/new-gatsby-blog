@@ -20,9 +20,14 @@ description: 'Notes on how to add lists in markdown'
    Continued.  
     1. A new sublist. Indent four spaces
     1. Item 2 in sublist
+        1. Nested nested add four more
 
 ##Unordered Lists
 
 * unordered can be asterisks
 - minuses
 + or pluses
+    + nested Indent four spaces
+        + nested Indent four more spaces
+            + nested Indent four more spaces
+                - nested Indent four more spaces
