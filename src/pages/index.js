@@ -29,7 +29,7 @@ export default ({ data }) => (
     <div>
       <h1>Dev Blogs</h1>
       <Image />
-      <h4> {data.allMarkdownRemark.totalCount}</h4>
+      <h3>Posts: {data.allMarkdownRemark.totalCount}</h3>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <div key={node.id}>
           <BlogLink to={node.fields.slug}>
