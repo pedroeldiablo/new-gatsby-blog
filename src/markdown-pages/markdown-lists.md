@@ -1,6 +1,6 @@
 ---
 title: 'Markdown Lists'
-date: '2019-26-11'
+date: '2019-11-27'
 description: 'Notes on how to add lists in markdown'
 ---
 

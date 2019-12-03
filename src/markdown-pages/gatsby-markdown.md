@@ -1,6 +1,6 @@
 ---
 title: "Getting to Grips with Gatsby"
-date: "2019-26-11"
+date: "2019-11-26"
 ---
 
 ### Getting to Grips with Gatsby.
