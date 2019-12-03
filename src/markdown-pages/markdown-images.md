@@ -15,7 +15,7 @@ Exclamation point followed by square brackets around the alt text and round brac
 
 ![A link in square brackets followed by (https://peter-ldn-gatsby-blog.netlify.com/static/48feca0b8b79eef483ad5b6ffa6bd751/19d57/thinking-about-code.png)](https://peter-ldn-gatsby-blog.netlify.com/static/48feca0b8b79eef483ad5b6ffa6bd751/19d57/thinking-about-code.png "This is either a small dude or a huge laptop")
 
-## Reference Links
+## Reference Images
 
 Links can also be referenced. Exclamation mark followed by square brackets around the alt text followed by another set of square brackets around a reference text or number. This matches to a reference that takes the format of a set of square brackets followed by a colon and then the url. 
 
