@@ -18,11 +18,11 @@ Note that as of Chrome 78 this feature isn't supported. Please use Firefox or Sa
 <div class="fixed-div" markdown='1'>
 
 <ul class="spinning-around" markdown='1'>
-<li><h6>A</h6></li>
-<li><h6>B</h6></li>
-<li><h6>C</h6></li>
-<li><h6>D</h6></li>
-<li><h6>E</h6></li>
+<li><h6>ABCDEFGHIJKLMNOPQRSTUVWXYZ</h6></li>
+<li><h6>abcdefghijklmnopqrstuvwxyz</h6></li>
+<li><h6>0123456789</h6></li>
+<li><h6>!@€£#$%^&*()-_=+[]{};:'"|\,<>./?`~</h6></li>
+<li><h6>ÀÊĮŒÜ</h6></li>
 <li><h6>F</h6></li>
 <li><h6>G</h6></li>
 <li><h6>H</h6></li>
