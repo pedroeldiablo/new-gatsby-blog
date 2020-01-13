@@ -17,6 +17,8 @@ useState takes one arguement. This is the initial state. It returns a pair.
 `state` is the current state.
 `setState` is a function that allows you to update the state. 
 
+Unlike normal variables which only exist at runtime, the state variables are preserved by React. So state can persist.
+
 
 
 #### Example
