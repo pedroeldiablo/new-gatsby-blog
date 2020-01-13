@@ -8,11 +8,11 @@ description: 'useEffect'
 
 The Effect Hook, useEffect adds the ability to complete tasks such as fetching data, manually changing the DOM or setting up subscriptions, which can affect other components and which can't be done before rendering. 
 
-They fill a role similar to the component lifecycle methods (componentDidMount, componentDidUpdate and componentWillUnmount) but as a singgle API.
+They fill a role similar to the component lifecycle methods (componentDidMount, componentDidUpdate and componentWillUnmount) but as a single API.
 
 How do they work? 
 
-useEFfect are functions that run after the changes to the DOM. By default are run after every render - including the first. 
+useEFfect are functions that run after the changes to the DOM. By default they are run after every render - including the first. 
 
 As they are declared inside the functional component they have access to it's scope including state varibles props and state. 
 
