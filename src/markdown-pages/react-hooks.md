@@ -1,6 +1,6 @@
 ---
 title: 'React Hooks'
-date: '2020-13-01'
+date: '2020-01-13'
 description: 'What are React Hooks, and why are people using them?'
 ---
 
