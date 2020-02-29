@@ -1,6 +1,6 @@
 ---
 title: 'React Hooks useEffect'
-date: '2020-13-01'
+date: '2020-01-13'
 description: 'useEffect'
 ---
 
