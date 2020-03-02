@@ -1005,3 +1005,32 @@ li:nth-last-child(6) {
     /* font-size: 0; */
   }
 }
+
+.gradient-demo {
+  position: relative;
+  height: 20vh;
+  width: 20vh;
+  display: block;
+}
+
+.gradient-box {
+  position: absolute;
+
+}
+
+.gradient {
+  background: linear-gradient(90deg, red, cyan);
+  height: 20vh;
+  width: 20vh;
+}
+
+.gradient:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  mask-image: linear-gradient(to bottom, transparent, black);
+  background: linear-gradient(90deg, hotpink, rebeccapurple);
+}
