@@ -128,3 +128,16 @@ newFunction('inside later')
 > Time thenMon Mar 30 2020 00:28:20 GMT+0100 (British Summer Time)
 
 > Time now Mon Mar 30 2020 00:30:07 GMT+0100 (British Summer Time)
+
+### Common uses
+
+Fetching data
+
+```js
+function getContent(url) {
+    fetch(url).then(() => {
+        console.log(url + 'was got')
+    })
+    .catch(error => window.alert("Opps! Was there a disconnect at " + url + "?"))
+    .finally(() => this.setState({ loadingUrl: false}))
+}
