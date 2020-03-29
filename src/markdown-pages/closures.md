@@ -141,3 +141,6 @@ function getContent(url) {
     .catch(error => window.alert("Opps! Was there a disconnect at " + url + "?"))
     .finally(() => this.setState({ loadingUrl: false}))
 }
+
+getContent('https://peter-ldn-gatsby-blog.netlify.com/');
+```
