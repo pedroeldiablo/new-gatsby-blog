@@ -99,7 +99,7 @@ function outerFunction(outerVariable) {
          const now = new Date();
         console.log('Outer Variable ' + outerVariable)
         console.log('Inner Variable ' + innerVariable)
-        console.log('Time then' + then)
+        console.log('Time then ' + then)
         console.log('Time now ' + now)
     }
 }
@@ -113,7 +113,7 @@ newFunction('inside is now')
 
 > Inner Variable inside is now
 
-> Time thenMon Mar 30 2020 00:28:20 GMT+0100 (British Summer Time)
+> Time then Mon Mar 30 2020 00:28:20 GMT+0100 (British Summer Time)
 
 > Time now Mon Mar 30 2020 00:28:27 GMT+0100 (British Summer Time)
 
@@ -125,7 +125,7 @@ newFunction('inside later')
 
 > Inner Variable inside later
 
-> Time thenMon Mar 30 2020 00:28:20 GMT+0100 (British Summer Time)
+> Time then Mon Mar 30 2020 00:28:20 GMT+0100 (British Summer Time)
 
 > Time now Mon Mar 30 2020 00:30:07 GMT+0100 (British Summer Time)
 
