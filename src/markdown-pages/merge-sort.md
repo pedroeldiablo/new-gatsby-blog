@@ -1,5 +1,5 @@
 ---
-title: 'Bubble Sort'
+title: 'Merge Sort'
 date: '2020-04-21'
 description: 'Sorting Algorithms - Merge Sort'
 ---
@@ -8,7 +8,7 @@ Takes a *divide and conquer* approach that relies on the idea that an array cons
 
 Split the original array into arrays with only a single value. Then progressively recombine them sorting as you do. 
 
-As each individual array is sorted then recombining them you only need to resort values some of the time. 
+As each individual array is sorted then recombining them you only need to sort values some of the time. 
 
 i.e. if there are two arrays `array1 = [2, 3, 4, 5]` and `array2 = [6, 7, 99, 100]`. 
 
