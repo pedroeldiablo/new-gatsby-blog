@@ -71,3 +71,25 @@ xman = [16, "Havok", false] // Error
 ```
 
 In this case when intialised incorrectly the 0th item would be a number which doesn't match the type definition of string.
+
+### Enum
+
+Enums allow for the declaration of a set of named constants.
+
+These can be numeric, string or heterogeneous (a mix of numeric and string values).
+
+Numeric enums store string values as numebers. Unless otherwise defined these start with zero and increment by 1.
+
+```ts
+enum SecondGeneration {
+  Storm,
+  Colossus,
+  Nightcrawler,
+  Wolverine,
+  Banshee,
+  Sunfire,
+  Thunderbird,
+}
+```
+
+}
