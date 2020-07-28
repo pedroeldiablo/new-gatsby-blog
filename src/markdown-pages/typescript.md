@@ -142,7 +142,7 @@ Enums can also be assigned computed values.
 
 ```ts
 enum SecondGeneration {
-  Storm = 3,
+  Storm = getPowerCode("Storm"),
   Colossus = 2,
   Nightcrawler = 2,
   Wolverine = getPowerCode("Wolverine"),
@@ -155,9 +155,154 @@ function getPowerCode(teammateName: string): number {
   if (teammateNam === "Wolverine") {
     return 5
   }
+  return 3
 }
 
 SecondGeneration.Storm // returns 3
 SecondGeneration.Wolverine // returns 5
 SecondGeneration.Thunderbird // returns 10
+```
+
+When including both computed and and constant members uninitialised members must either come first, or after members initialised with numeric constants.
+
+The below will error.
+
+```ts
+enum SecondGeneration {
+  Storm = getPowerCode("Storm"),
+  Colossus, // Error: Enum member must have initializer
+  Nightcrawler = 2,
+  Wolverine = getPowerCode("Wolverine"),
+  Banshee = 1,
+  Sunfire = 6,
+  Thunderbird = Wolverine * 2,
+}
+
+function getPowerCode(teammateName: string): number {
+  if (teammateName === "Wolverine") {
+    return 5
+  }
+  return 3
+}
+```
+
+Changing the order so that a numeric value is assigned directly before the uninitiated member fixes this problem.
+
+```ts
+enum SecondGeneration {
+  Wolverine = getPowerCode("Wolverine"),
+  Banshee = 1,
+  Nightcrawler = 2,
+  Sunfire = 6,
+  Colossus,
+  Storm = getPowerCode("Storm"),
+
+  Thunderbird = Wolverine * 2,
+}
+
+enum SecondGenerationA {
+  Colossus,
+  Storm = getPowerCode("Storm"),
+  Nightcrawler = 2,
+  Wolverine = getPowerCode("Wolverine"),
+  Banshee = 1,
+  Sunfire = 6,
+  Thunderbird = Wolverine * 2,
+}
+
+function getPowerCode(teammateName: string): number {
+  if (teammateName === "Wolverine") {
+    return 5
+  }
+  return 3
+}
+
+console.log("Storm", SecondGeneration.Storm) // returns "Storm", 3
+console.log("Wolverine", SecondGeneration.Wolverine) // returns "Wolverine", 5
+console.log("Thunderbird", SecondGeneration.Thunderbird) // returns "Thunderbird", 10
+
+// Access String Enum
+console.log("Nightcrawler", SecondGeneration["Nightcrawler"]) // returns "Nightcrawler", 2
+console.log("Colossus ", SecondGeneration["Colossus"]) // returns "Colossus", 7
+console.log("Colossus ", SecondGenerationA["Colossus"]) // returns "Colossus", 0
+```
+
+#### Gotchas
+
+As it is possible for members to be assigned the same value, and as numeric values will be incremented unless defined, the following is true.
+
+```ts
+enum Color {
+  Red = 3,
+  Green = 2,
+  Blue,
+}
+
+console.log(Color.Red === Color.Blue) //true
+```
+
+#### Strings
+
+In the same way that we can assign numeric values to members of an enum we can also use string literals. These can be defined in single or double quotes and with backticks.
+
+```ts
+enum SecondGeneration {
+  Storm = "WEATHER MANIPULATION",
+  Colossus = "ORGANIC STEEL FORUM",
+  Nightcrawler = "TELEPORTATION",
+  Wolverine = "HEALING FACTOR",
+  Banshee = "SONIC SCREAM",
+  Sunfire = "ATOMIC FIRE",
+  Thunderbird = "SUPERHUMAN REFLEXES",
+}
+
+console.log(SecondGeneration.Storm) // returns "WEATHER MANIPULATION"
+console.log(SecondGeneration.Wolverine) // returns "HEALING FACTOR"
+console.log(SecondGeneration.Thunderbird) // returns "SUPERHUMAN REFLEXES"
+
+// Access String Enum
+console.log(SecondGeneration["Nightcrawler"]) // returns "TELEPORTATION"
+```
+
+#### Heterogeneous
+
+Enums can contain a combination of both numeric and string values.
+
+```ts
+enum SecondGeneration {
+  Storm = "WEATHER MANIPULATION",
+  Colossus = "ORGANIC STEEL FORUM",
+  Wolverine = "HEALING FACTOR",
+  Nightcrawler = 5,
+  Banshee,
+  Sunfire,
+  Thunderbird,
+}
+
+console.log(SecondGeneration.Storm) // returns "WEATHER MANIPULATION"
+console.log(SecondGeneration.Wolverine) // returns "HEALING FACTOR"
+console.log(SecondGeneration.Thunderbird) // returns 8
+
+// Access String Enum
+console.log(SecondGeneration["Nightcrawler"]) // returns 5
+```
+
+Note: It is not possible to use computed values in heterogeneous enums as they result in the error `Computed values are not permitted in an enum with string valued members.`
+
+#### Gotchas
+
+As with numeric values string literals can be the same.
+
+```ts
+enum Powers {
+  Storm = "WEATHER MANIPULATION",
+  Polaris = `MAGNETISM`,
+  Magneto = "MAGNETISM",
+}
+
+console.log(Powers.Storm === Powers.Polaris) //false
+console.log("Magneto equals Polaris?", Powers.Magneto === Powers.Polaris) //true
+
+console.log(Powers["Magneto"]) // "MAGNETISM"
+console.log(Powers["Polaris"]) // "MAGNETISM"
 ```
