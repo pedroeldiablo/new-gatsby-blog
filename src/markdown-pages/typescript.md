@@ -227,7 +227,7 @@ console.log("Colossus ", SecondGeneration["Colossus"]) // returns "Colossus", 7
 console.log("Colossus ", SecondGenerationA["Colossus"]) // returns "Colossus", 0
 ```
 
-#### Gotchas
+#### Numeric Enum Gotchas
 
 As it is possible for members to be assigned the same value, and as numeric values will be incremented unless defined, the following is true.
 
@@ -264,6 +264,24 @@ console.log(SecondGeneration.Thunderbird) // returns "SUPERHUMAN REFLEXES"
 console.log(SecondGeneration["Nightcrawler"]) // returns "TELEPORTATION"
 ```
 
+#### String Enum Gotchas
+
+As with numeric values string literals can be the same.
+
+```ts
+enum Powers {
+  Storm = "WEATHER MANIPULATION",
+  Polaris = `MAGNETISM`,
+  Magneto = "MAGNETISM",
+}
+
+console.log(Powers.Storm === Powers.Polaris) //false
+console.log("Magneto equals Polaris?", Powers.Magneto === Powers.Polaris) //true
+
+console.log(Powers["Magneto"]) // "MAGNETISM"
+console.log(Powers["Polaris"]) // "MAGNETISM"
+```
+
 #### Heterogeneous
 
 Enums can contain a combination of both numeric and string values.
@@ -288,21 +306,3 @@ console.log(SecondGeneration["Nightcrawler"]) // returns 5
 ```
 
 Note: It is not possible to use computed values in heterogeneous enums as they result in the error `Computed values are not permitted in an enum with string valued members.`
-
-#### Gotchas
-
-As with numeric values string literals can be the same.
-
-```ts
-enum Powers {
-  Storm = "WEATHER MANIPULATION",
-  Polaris = `MAGNETISM`,
-  Magneto = "MAGNETISM",
-}
-
-console.log(Powers.Storm === Powers.Polaris) //false
-console.log("Magneto equals Polaris?", Powers.Magneto === Powers.Polaris) //true
-
-console.log(Powers["Magneto"]) // "MAGNETISM"
-console.log(Powers["Polaris"]) // "MAGNETISM"
-```
