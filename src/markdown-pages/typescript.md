@@ -78,6 +78,8 @@ Enums allow for the declaration of a set of named constants.
 
 These can be numeric, string or heterogeneous (a mix of numeric and string values).
 
+#### Numeric
+
 Numeric enums store string values as numebers. Unless otherwise defined these start with zero and increment by 1.
 
 ```ts
@@ -90,6 +92,72 @@ enum SecondGeneration {
   Sunfire,
   Thunderbird,
 }
+
+SecondGeneration.Storm // returns 0
+SecondGeneration.Wolverine // returns 3
+SecondGeneration.Thunderbird // returns 6
 ```
 
+In the above Storm = 0, Colossus = 1, Nightcrawler = 2 etc.
+
+However if we choose to we can initialise the first member with a value we define.
+
+```ts
+enum SecondGeneration {
+  Storm = 3,
+  Colossus,
+  Nightcrawler,
+  Wolverine,
+  Banshee,
+  Sunfire,
+  Thunderbird,
 }
+
+SecondGeneration.Storm // returns 3
+SecondGeneration.Wolverine // returns 6
+SecondGeneration.Thunderbird // returns 9
+```
+
+Susequent members are still incremented, so for this case Colossus = 4.
+
+We can also explictly assign each memeber a value, and these do not have to be unique or sequential.
+
+```ts
+enum SecondGeneration {
+  Storm = 3,
+  Colossus = 2,
+  Nightcrawler = 2,
+  Wolverine = 5,
+  Banshee = 1,
+  Sunfire = 6,
+  Thunderbird = 0,
+}
+
+SecondGeneration.Storm // returns 3
+SecondGeneration.Wolverine // returns 5
+SecondGeneration.Thunderbird // returns 0
+```
+
+Enums can also be assigned computed values.
+
+```ts
+enum SecondGeneration {
+  Storm = 3,
+  Colossus = 2,
+  Nightcrawler = 2,
+  Wolverine = getPowerCode("Wolverine"),
+  Banshee = 1,
+  Sunfire = 6,
+  Thunderbird = Wolverine * 2,
+}
+
+function getPowerCode(teammateName: string): number {
+  if (teammateNam === "Wolverine") {
+    return 5
+  }
+}
+
+SecondGeneration.Storm // returns 3
+SecondGeneration.Wolverine // returns 5
+SecondGeneration.Thunderbird // returns 10
+```
