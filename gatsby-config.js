@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "To be, or to Gatsby that is the question",
+    title: "To be, or to Gatsby, that is the question",
     description: 'Things that I\'ve learnt, re-remembered and discovered while developing a Gatsby blogging site',
     author: '@pedroeldiablo',
   },
