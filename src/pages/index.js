@@ -30,6 +30,19 @@ const HomePage = ({ data }) => (
       <h1>Dev Blogs</h1>
       <Image />
       <h3>Posts: {data.allMarkdownRemark.totalCount}</h3>
+      <h3>Posts MDX: {data.allMdx.totalCount}</h3>
+      {data.allMdx.edges.map(({ node }) => (
+        <div key={node.id}>
+          <BlogLink to={node.slug}>
+            <BlogTitle>
+              {node.frontmatter.title} - {node.frontmatter.date}
+            </BlogTitle>
+          </BlogLink>
+          <p>{node.excerpt}</p>
+          <GoToLink to={node.slug}>Go to blog</GoToLink>
+          <p>Time to read: {node.timeToRead}</p>
+        </div>
+      ))}
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <div key={node.id}>
           <BlogLink to={node.fields.slug}>
@@ -66,6 +79,23 @@ export const query = graphql`
         }
       }
     }
+    allMdx {
+    edges {
+      node {
+        slug
+        id
+        frontmatter {
+          date
+          description
+          title
+        }
+        timeToRead
+        excerpt
+      }
+    }
+    totalCount
+  }
+
   }
 `
 export default HomePage
