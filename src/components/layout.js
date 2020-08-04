@@ -70,7 +70,7 @@ const Layout = ({ children}) => {
         </footer>
       </div>
     </PageComponent>
-    </ViewportProvider>
+     </ViewportProvider>
   )
 }
 

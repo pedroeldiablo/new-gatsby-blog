@@ -5,7 +5,7 @@ import { viewportContext} from '../context/viewportContext'
 import {useViewport} from '../hooks/useViewport'
 
 const Header = ({ siteTitle }) => {
-  // console.log("What is useV", useViewport().width)
+  console.log("What is useV", useViewport().width)
   const cCon = useContext(viewportContext);
   const currentColor = cCon.width / 255;
   const hueRotation = `hue-rotate(${currentColor}rad)`;

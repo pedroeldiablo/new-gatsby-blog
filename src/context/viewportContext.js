@@ -13,9 +13,12 @@ export const ViewportProvider = ({ children }) => {
   const handleWindowResize = () => {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
+    console.log("handledWindowResize");
   }
 
   useEffect(() => {
+    console.log("used effect", window.innerWidth)
+    handleWindowResize();
     window.addEventListener("resize", handleWindowResize);
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
