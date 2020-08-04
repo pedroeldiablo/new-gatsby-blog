@@ -6,6 +6,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-mdx',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -18,6 +19,13 @@ module.exports = {
       options: {
         name: 'markdown',
         path: `${__dirname}/src/markdown-pages`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'markdown',
+        path: `${__dirname}/src/pages`,
       },
     },
     'gatsby-transformer-remark',
