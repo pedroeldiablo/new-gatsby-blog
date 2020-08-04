@@ -5,8 +5,8 @@ export const viewportContext = createContext({});
 export const ViewportProvider = ({ children }) => {
   // This is the exact same logic that we previously had in our hook
 
-  const [width, setWidth] = useState(window.innerWidth);
-  const [height, setHeight] = useState(window.innerHeight);
+  const [width, setWidth] = useState();
+  const [height, setHeight] = useState();
   const [applesCount, setApplesCount] = useState(3);
   const [bananaCount, setBananaCount] = useState();
 
