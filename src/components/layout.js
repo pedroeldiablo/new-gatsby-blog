@@ -5,10 +5,11 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
+import { ViewportProvider, viewportContext } from '../context/viewportContext'
 import {useViewport} from '../hooks/useViewport'
 
 import Header from './header'
@@ -24,23 +25,22 @@ background: ${backgroundColor};
 height: 100%;
 width: 100vw;`
 
+const Layout = ({ children}) => {
+  // const cContext = useContext(viewportContext);
+  // const currentColor = cContext.width / 255;
+  // const hueRotation = `hue-rotate(${currentColor}rad)`;
 
+  // const cContext = useContext(viewportContext1).width;
 
-const Layout = ({ children }) => {
-  console.log(useViewport().width);
+  // console.log({cContext});
+
+  console.log("Layout1 width", useViewport());
 
   const currentColor = useViewport().width / 255;
   const hueRotation = `hue-rotate(${currentColor}rad)`;
 
   console.log({hueRotation});
-
-
-
- 
-
-  console.log("Current color is ", currentColor);
   
-
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -52,6 +52,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
+    <ViewportProvider>
     <PageComponent style={{filter:hueRotation}}>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
@@ -69,6 +70,7 @@ const Layout = ({ children }) => {
         </footer>
       </div>
     </PageComponent>
+    </ViewportProvider>
   )
 }
 
