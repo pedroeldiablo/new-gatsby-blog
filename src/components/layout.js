@@ -5,14 +5,42 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
+import styled from 'styled-components'
+import { ViewportProvider, viewportContext } from '../context/viewportContext'
+import {useViewport} from '../hooks/useViewport'
 
 import Header from './header'
 import './layout.css'
 
-const Layout = ({ children }) => {
+const backgroundColor = `linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);`;
+// const currentColor = useViewport().width / 255;
+
+const PageComponent = styled.div`
+background: ${backgroundColor};
+height: 100%;
+width: 100vw;`
+
+const Layout = ({ children}) => {
+  // const cContext = useContext(viewportContext);
+  // const currentColor = cContext.width / 255;
+  // const hueRotation = `hue-rotate(${currentColor}rad)`;
+
+  // const cContext = useContext(viewportContext1).width;
+
+  // console.log({cContext});
+
+  console.log("Layout1 width", useViewport());
+
+  const currentColor = useViewport().width / 255;
+  const hueRotation = `hue-rotate(${currentColor}rad)`;
+
+  console.log({hueRotation});
+  
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -24,7 +52,8 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <ViewportProvider>
+    <PageComponent style={{filter:hueRotation}}>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
@@ -40,7 +69,8 @@ const Layout = ({ children }) => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </>
+    </PageComponent>
+    </ViewportProvider>
   )
 }
 
