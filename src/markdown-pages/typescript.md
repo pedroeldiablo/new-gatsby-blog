@@ -33,7 +33,7 @@ const age: number = 28
 ///Explictly assigned as a boolean
 const deceased: boolean = false
 
-///Explictly assigned as a string. icksStrings can be defined in single or double quotes or backticks. Within a template string embedded expressions are fine.
+///Explictly assigned as a string. Strings can be defined in single or double quotes or backticks. Within a template string embedded expressions are fine.
 let introduction: string = `Hello, my name is ${name}. I'm ${age +
   1} years old next month.`
 

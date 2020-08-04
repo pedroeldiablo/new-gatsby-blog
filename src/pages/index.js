@@ -23,7 +23,7 @@ const BlogTitle = styled.h3`
   color: #ff0084;
 `
 
-export default ({ data }) => (
+const HomePage = ({ data }) => (
   <Layout>
     <SEO title="Home" />
     <div>
@@ -68,3 +68,4 @@ export const query = graphql`
     }
   }
 `
+export default HomePage
