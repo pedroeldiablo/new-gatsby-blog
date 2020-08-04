@@ -6,14 +6,14 @@ import { ViewportProvider, viewportContext } from '../context/viewportContext'
 export default ({ data }) => {
   const post = data.markdownRemark
   return (
-    // <ViewportProvider>
+    <ViewportProvider>
     <Layout>
       <div>
         <h1>{post.frontmatter.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
     </Layout>
-    // </ViewportProvider>
+    </ViewportProvider>
   )
 }
 
