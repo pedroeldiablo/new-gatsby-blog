@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
+import { ViewportProvider, viewportContext } from '../context/viewportContext'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Gradient from '../components/gradient'
 
-const SecondPage = () => (
+const AboutPage = () => (
+  <ViewportProvider>
   <Layout>
     <SEO title="About" />
     <h1>What's this all about?</h1>
@@ -13,6 +15,7 @@ const SecondPage = () => (
     <Gradient />
     <Link to="/">Go back to the homepage</Link>
   </Layout>
+  </ViewportProvider>
 )
 
-export default SecondPage
+export default AboutPage
