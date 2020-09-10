@@ -37,7 +37,6 @@ export const query = graphql`
       }
     }
     mdx(slug: {eq: $slug}) {
-    html
     body
     frontmatter {
       title

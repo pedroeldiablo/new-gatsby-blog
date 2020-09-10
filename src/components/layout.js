@@ -23,7 +23,8 @@ linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);`;
 const PageComponent = styled.div`
 background: ${backgroundColor};
 height: 100%;
-width: 100vw;`
+width: 100vw;
+min-height: 100vh;`
 
 const Layout = ({ children}) => {
   // const cContext = useContext(viewportContext);

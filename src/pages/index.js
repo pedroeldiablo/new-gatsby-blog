@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import { ViewportProvider, viewportContext } from '../context/viewportContext'
 
 import styled from 'styled-components'
 import Layout from '../components/layout'
@@ -24,6 +25,7 @@ const BlogTitle = styled.h3`
 `
 
 const HomePage = ({ data }) => (
+  <ViewportProvider>
   <Layout>
     <SEO title="Home" />
     <div>
@@ -57,6 +59,7 @@ const HomePage = ({ data }) => (
       ))}
     </div>
   </Layout>
+  </ViewportProvider>
 )
 
 export const query = graphql`
