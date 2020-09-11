@@ -6,7 +6,16 @@ description: "Pure CSS approach to using images as text"
 
 import IframeComponent from "../components/iframeComponent"
 
-Using an image to visually fill text
+Filling text with an image is a way to create an eye catching and multidimensional look, and can be achieved with relatively little effort.
+It takes advantage of the ability to set the background of the element to an image.
+In itself this would normally fill the content box of the text element however we can set the background-clip property.
+There are four options for actively defining this: content-box, padding-box, border-box and text.
+Defining this as text limits the areas that we can see the backgound to only that area of the copy.
+
+As this is setting the background it's important to consider that the text color and more specifically opacity will limit what we can see of the image below.
+Specifying a completely opaque color will mean you see none of the image, setting complete translucence means you see the image unchanged.
+Adding a color that uses an rgba value of less than 1 on the alpha channel will allow the image to show through to a degree.
+This can be further enhanced by applying mixed-blend-mode values (similar to those used in graphic design tools such as Photoshop or Affinity Design) to determine how the colors from the image and text interact.
 
 ```css
 @import url("https://fonts.googleapis.com/css?family=Monoton&display=swap");
@@ -17,15 +26,35 @@ body {
   justify-content: center;
   align-items: center;
   font-family: "Monoton", cursive;
+  background: linear-gradient(
+      to left,
+      rgba(200, 090, 090, 0.3),
+      rgba(005, 0, 0, 0.1),
+      rgba(090, 090, 200, 0.3)
+    ), url(https://images.unsplash.com/photo-1524207874394-5ec7c8c8e1a6);
+  background-size: cover;
 }
 
 h1 {
-  font-size: 15vw;
+  font-size: 10vw;
+  /*   text-decoration: underline; */
   background-image: url(https://images.unsplash.com/photo-1505143050064-819ec023399f);
   background-size: cover;
   background-clip: text;
   -webkit-background-clip: text;
-  color: transparent;
+  color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h1::first-letter {
+  font-size: 10vw;
+  text-decoration: underline;
+  background-image: url(https://images.unsplash.com/photo-1516683037151-9a17603a8dc7);
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  /*   color: rgba(0, 0, 0, 0.2); */
+  text-decoration: none;
 }
 ```
 
