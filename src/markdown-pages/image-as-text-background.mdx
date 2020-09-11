@@ -1,0 +1,98 @@
+---
+title: "CSS Image as Text Background"
+date: "2020-09-11"
+description: "Pure CSS approach to using images as text"
+---
+
+import IframeComponent from "../components/iframeComponent"
+
+Using an image to visually fill text
+
+```css
+@import url("https://fonts.googleapis.com/css?family=Monoton&display=swap");
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Monoton", cursive;
+}
+
+h1 {
+  font-size: 15vw;
+  background-image: url(https://images.unsplash.com/photo-1505143050064-819ec023399f);
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+```
+
+```css
+@import url("https://fonts.googleapis.com/css?family=Monoton&display=swap");
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Monoton", cursive;
+  background: linear-gradient(
+      to left,
+      rgba(200, 090, 090, 0.3),
+      rgba(005, 0, 0, 0.1),
+      rgba(090, 090, 200, 0.3)
+    ), url(https://images.unsplash.com/photo-1524207874394-5ec7c8c8e1a6);
+  background-size: cover;
+}
+
+h1 {
+  font-size: 20vw;
+  background-image: url(https://images.unsplash.com/photo-1505143050064-819ec023399f);
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+```
+
+<IframeComponent>
+  <iframe
+    height="623"
+    style="width: 100%; filter: hue-rotate(0rad);"
+    scrolling="no"
+    title="Image As Text Background"
+    src="https://codepen.io/petersldn/embed/ZEWoWqa?height=623&theme-id=dark&default-tab=css,result"
+    frameborder="no"
+    loading="lazy"
+    allowtransparency="true"
+    allowfullscreen="true"
+  >
+    See the Pen{" "}
+    <a href="https://codepen.io/petersldn/pen/ZEWoWqa">
+      Image As Text Background
+    </a>{" "}
+    by Peter Williams (<a href="https://codepen.io/petersldn">@petersldn</a>) on{" "}
+    <a href="https://codepen.io">CodePen</a>.
+  </iframe>
+</IframeComponent>
+<IframeComponent>
+  <iframe
+    height="265"
+    style="width: 100%;"
+    scrolling="no"
+    title="Title Card"
+    src="https://codepen.io/petersldn/embed/RwayGVj?height=265&theme-id=dark&default-tab=css,result"
+    frameborder="no"
+    loading="lazy"
+    allowtransparency="true"
+    allowfullscreen="true"
+  >
+    See the Pen{" "}
+    <a href="https://codepen.io/petersldn/pen/RwayGVj">Title Card</a> by Peter
+    Williams (<a href="https://codepen.io/petersldn">@petersldn</a>) on{" "}
+    <a href="https://codepen.io">CodePen</a>.
+  </iframe>
+</IframeComponent>
