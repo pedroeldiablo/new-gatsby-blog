@@ -56,12 +56,12 @@ export const MailChimpSignUp = () => {
         </div>
         <div className="mc-field-group">
             <label for="mce-FNAME">First Name </label>
-            <input type="text" name="FNAME" className="" id="mce-FNAME" value={listFields[name]} onChange={e => 
+            <input type="text" name="FNAME" className="" id="mce-FNAME" value={listFields['FNAME']} onChange={e => 
           handleChange(e.target)}></input>
         </div>
     <div className="mc-field-group">
         <label for="mce-LNAME">Last Name </label>
-        <input type="text" name="LNAME" className="" id="mce-LNAME" value={listFields[name]} onChange={e => 
+        <input type="text" name="LNAME" className="" id="mce-LNAME" value={listFields['LNAME']} onChange={e => 
           handleChange(e.target)}></input>
     </div>
     {/* <div className="mc-field-group size1of2">
