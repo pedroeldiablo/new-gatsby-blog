@@ -4,7 +4,7 @@ import addToMailchimp from 'gatsby-plugin-mailchimp'
 
 export const MailChimpSignUp = () => {
     const [email, setEmail ] = useState('');
-    const [listFields, updateListFields] = useState({});
+    const [listFields, updateListFields] = useState({'FNAME': '', 'LNAME': ''});
     
   // `addToMailchimp` returns a promise
   // Note that you need to send an email & optionally, listFields
@@ -18,10 +18,10 @@ export const MailChimpSignUp = () => {
     }
 
     // see form entries and updates in console for debugging
-    // useEffect(() => {
-    //     console.log("EMAIL", email);
-    //     console.log("newly updated", listFields);
-    // })
+    useEffect(() => {
+        console.log("EMAIL", email);
+        console.log("newly updated", listFields);
+    })
 
   const handleSubmit = async (e) => {
     e.preventDefault();
