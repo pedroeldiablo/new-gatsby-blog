@@ -38,6 +38,7 @@ export const MailChimpSignUp = () => {
         console.log('err', err)
         alert(err)
     })
+    console.log(result);
     // I recommend setting `result` to React state
     // but you can do whatever you want
   }
@@ -50,17 +51,17 @@ export const MailChimpSignUp = () => {
         <div className="mc-field-group">
 	        <label for="mce-EMAIL">{`Email Address`} <span className="asterisk">*</span>
             </label>
-	        <input type="email" value={email} name="EMAIL" className="required email" id="mce-EMAIL" onChange={e => {setEmail(e.target.value); console.log(email)}}
+	        <input type="email" name="EMAIL" className="required email" id="mce-EMAIL" value={email} onChange={e => {setEmail(e.target.value); console.log(email)}}
         ></input>
         </div>
         <div className="mc-field-group">
             <label for="mce-FNAME">First Name </label>
-            <input type="text" value={listFields[name]} name="FNAME" className="" id="mce-FNAME" onChange={e => 
+            <input type="text" name="FNAME" className="" id="mce-FNAME" value={listFields[name]} onChange={e => 
           handleChange(e.target)}></input>
         </div>
     <div className="mc-field-group">
         <label for="mce-LNAME">Last Name </label>
-        <input type="text" value={listFields[name]} name="LNAME" className="" id="mce-LNAME" onChange={e => 
+        <input type="text" name="LNAME" className="" id="mce-LNAME" value={listFields[name]} onChange={e => 
           handleChange(e.target)}></input>
     </div>
     {/* <div className="mc-field-group size1of2">
