@@ -3,30 +3,39 @@ import PropTypes from 'prop-types'
 import React, { useContext } from 'react'
 import { viewportContext} from '../context/viewportContext'
 import {useViewport} from '../hooks/useViewport'
+import Image from './image'
+import styled from 'styled-components'
+
+const HeaderStyles = styled.header`
+      display: grid;
+      grid-template-columns: 75% 25%;
+      background:#ff0084;
+      background:rgba(255, 0, 132, 0.2);
+      margin-bottom: 1.45rem;
+      @media (max-width: 768px) {
+        grid-template-columns: 100%;
+  }
+`
 
 const Header = ({ siteTitle }) => {
-  console.log("What is useV", useViewport().width)
+  // console.log("What is useV", useViewport().width)
   const cCon = useContext(viewportContext);
   const currentColor = cCon.width / 255;
   const hueRotation = `hue-rotate(${currentColor}rad)`;
 
- console.log("hello", cCon)
-  return <header
-    style={{
-      background: `#ff0084`,
-      marginBottom: `1.45rem`,
-      filter: `${hueRotation}`
-
-    }}
+  return <HeaderStyles
+    style={{filter: `${hueRotation}`}}
   >
-    <div
+    {/* <div
       style={{
         margin: `0 auto`,
         maxWidth: 960,
         padding: `1.45rem 1.0875rem`,
+        display: `flex`,
+        alignItems: `center`
       }}
-    >
-      <h1 style={{ margin: 0 }}>
+    > */}
+      <h1 style={{ marginLeft: `10px`, marginBottom: `0px` }}>
         <Link
           to="/"
           style={{
@@ -37,8 +46,9 @@ const Header = ({ siteTitle }) => {
           {siteTitle}
         </Link>
       </h1>
-    </div>
-  </header>
+      <Image />
+    {/* </div> */}
+  </HeaderStyles>
         }
 
 

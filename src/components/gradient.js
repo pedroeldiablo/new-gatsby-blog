@@ -1,9 +1,9 @@
 import React from 'react'
 
 const Gradient = () => (
-    <div class="gradient-demo" >
-        <div class="gradient-box" >
-            <div class="gradient" >
+    <div className="gradient-demo" >
+        <div className="gradient-box" >
+            <div className="gradient" >
             </div>
         </div> 
     </div > 

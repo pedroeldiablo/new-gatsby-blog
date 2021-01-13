@@ -15,16 +15,18 @@ import {useViewport} from '../hooks/useViewport'
 import Header from './header'
 import './layout.css'
 
-const backgroundColor = `linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
-linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
-linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);`;
+const backgroundColor = `linear-gradient(217deg, rgba(255,0,0,.2), rgba(255,0,0,0) 70.71%),
+linear-gradient(127deg, rgba(0,255,0,.2), rgba(0,255,0,0) 70.71%),
+linear-gradient(336deg, rgba(0,0,255,.2), rgba(0,0,255,0) 70.71%);`;
 // const currentColor = useViewport().width / 255;
 
 const PageComponent = styled.div`
 background: ${backgroundColor};
 height: 100%;
 width: 100vw;
-min-height: 100vh;`
+min-height: 100vh;
+display: grid;
+`
 
 const Layout = ({ children}) => {
   // const cContext = useContext(viewportContext);
@@ -62,6 +64,7 @@ const Layout = ({ children}) => {
           maxWidth: 960,
           padding: `0px 1.0875rem 1.45rem`,
           paddingTop: 0,
+          width: `100vw`,
         }}
       >
         <main>{children}</main>
