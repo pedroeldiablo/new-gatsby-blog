@@ -22,5 +22,6 @@ Some topics that will hopefully be covered to a greater of lesser extent are ([M
 3. Gatsby pluggins
 4. Mailchimp integrations
 5. Github actions
+6. Styled-components/CSS in JS
 
 Functionality that might be needed as the number of posts grows includes filters and search. Currently the titles are working over time to make the posts somewhat navigable, however a more robust solution would be helpful.
