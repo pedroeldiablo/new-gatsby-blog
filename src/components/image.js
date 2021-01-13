@@ -22,10 +22,10 @@ const Image = () => {
       }
     }
   `)
-  console.log('data', data.image.childImageSharp.fluid)
+  // console.log('data', data.image.childImageSharp.fluid)
   return (
     <div>
-      <Img fluid={data.image.childImageSharp.fluid} />
+      {/* <Img fluid={data.image.childImageSharp.fluid} /> */}
       <Img fixed={data.image.childImageSharp.fixed} />
     </div>
   )
