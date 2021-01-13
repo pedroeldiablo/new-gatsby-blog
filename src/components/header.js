@@ -7,6 +7,8 @@ import Image from './image'
 import styled from 'styled-components'
 
 const HeaderStyles = styled.header`
+max-width: 960px;
+margin: 0 auto;
       display: grid;
       grid-template-columns: 75% 25%;
       background:#ff0084;
