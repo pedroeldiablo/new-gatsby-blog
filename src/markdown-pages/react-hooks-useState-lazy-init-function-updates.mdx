@@ -5,35 +5,18 @@ description: "useState Lazy Initialisation and Fuction Updates"
 ---
 
 import AgeMe from "../components/ageCounter"
+import SnoozeRemaining from "../components/snooze"
 
 # useState
 
-When you call useState with the initial state value, and it returns an array with the value of that state and a "state dispatch function" for updating it.
+When you call useState with the initial state value it returns an array with the value of that state and a "state dispatch function" for updating it.
 
 ```js
-// Using array destructuring useState returns the state - state and set state dispatch function - setState
+// Using array destructuring useState returns the state (state) and set state dispatch function (setState)
 const [state, setState] = useState(initialState)
 ```
 
 Calling the state dispatch function triggers a re-render of the component. This causes useState to be called again which retrieves the new state value and dispatch function.
-
-#### Setting Inital State with a function
-
-```js
-function AgeMe() {
-  const [age, setAge] = useState(() => 37)
-  const increment = () => setAge(previousAge => previousAge + 1)
-  return <button onClick={increment}>{age}</button>
-}
-```
-
-Initial state is still 37, however this time is is the result of the return of a fuction that is called.
-`age` on initialisation will be 37.
-`setAge` dispatch is called with a function that accepts the previous state and returns a new one.
-
-#### Why take this approach?
-
-<AgeMe />
 
 ```js
 import React, { useState } from "react"
@@ -49,3 +32,83 @@ function Counter() {
   )
 }
 ```
+
+#### Setting Inital State with a function
+
+```js
+function AgeMe() {
+  const [age, setAge] = useState(() => 37)
+  const increment = () => setAge(previousAge => previousAge + 1)
+  return <button onClick={increment}>{age}</button>
+}
+```
+
+<AgeMe />
+
+Initial state is still 37, however this time it is the result of the return of a fuction that is called.
+`age` on initialisation will be 37.
+`setAge` dispatch is called with a function that accepts the previous state and returns a new one.
+
+#### Why take this approach?
+
+Every time we click the button we update the state and cause a re-render.
+This means that for every click the AgeMe function is called.
+
+The function body runs, and all the code inside it runs.
+Any variables you create or arguments you pass are created and evaluated every render.
+
+Big deal? Most of the time no.
+
+When this becomes more of a perfomance issue is when the variables or arguements are themselves computationally intensive or slow.
+Remember the initial state is only used on the components first render.
+
+One example for this might be retrieving the value of the initial state from local storage.
+There are many cases where this would be useful, such as retrieving a shopping baskets saved on a users device.
+
+We want to do this on the initial render. For subsequent renders we are using the updated state (even if we are also updating the values stored in local storage),
+but would still suffer the performance impact if we are initialing and assigning this to a variable.
+
+### How does using a function to set the initial state help?
+
+Creating a function and calling a function are two different things.
+While the function will be created everytime we render, it will only be called on the initial render.
+We get the benefit of being able to use the value returned by the function on our inital render, but without the negative impact on subsequent renders.
+This method is referred to as 'lazy initialisation'
+
+```js
+function SnoozeRemaining() {
+  const initialSnooze = Number(window.localStorage.getItem("snooze-preference"))
+  const [timeRemaining, setTimeRemaining] = useState(initialSnooze)
+  const incrementTimeRemaining = extraTime =>
+    setTimeRemaining(timeRemaining => timeRemaining + extraTime)
+  return (
+    <>
+      <div>{timeRemaining}</>
+      <button onClick={incrementTimeRemaining(1)}>Add one minute</button>
+      <button onClick={incrementTimeRemaining(2)}>Add two minutes</button>
+    </>
+  )
+}
+```
+
+```js
+function SnoozeRemaining() {
+  const initialSnooze = () =>
+    Number(window.localStorage.getItem("snooze-preference") | 0)
+  const [timeRemaining, setTimeRemaining] = useState(initialSnooze)
+  const incrementTimeRemaining = value => {
+    setTimeRemaining(previousRemaining => previousRemaining + value)
+  }
+  const cancelSnooze = () => setTimeRemaining(0)
+  return (
+    <>
+      <div>{timeRemaining}</div>
+      <button onClick={() => incrementTimeRemaining(1)}>Add one minute</button>
+      <button onClick={() => incrementTimeRemaining(2)}>Add two minutes</button>
+      <button onClick={() => cancelSnooze()}>Cancel snooze</button>
+    </>
+  )
+}
+```
+
+<SnoozeRemaining />
