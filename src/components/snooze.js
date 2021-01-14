@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 
 function SnoozeRemaining() {
-    const initialSnooze = () => Number(window.localStorage.getItem('snooze-preference') | 0);
+    if (typeof window !== "undefined") {
+      const initialSnooze = () => Number(window.localStorage.getItem('snooze-preference') | 0);
     const [timeRemaining, setTimeRemaining] = useState(initialSnooze)
     const incrementTimeRemaining = (value) => {
         setTimeRemaining(previousRemaining => previousRemaining + value)  
@@ -15,6 +16,8 @@ function SnoozeRemaining() {
         <button onClick={() => cancelSnooze()}>Cancel snooze</button>
       </>
     )
+    }
+    return null
   }
 
 export default SnoozeRemaining
