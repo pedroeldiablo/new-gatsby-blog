@@ -4,8 +4,6 @@ date: "2021-01-16"
 description: "What are Generics and how do they help code reusability"
 ---
 
-# Generics
-
 Generics allow you to maintain type consistency without having to compromise reusability.
 
 ```ts
@@ -223,7 +221,7 @@ let v11 = makeArray<number, string>(5, "hello")
 v11 = ["bonjour", null]
 ```
 
-### Extending generics
+## Extending generics
 
 It is possible to define a generic in such a way that we are applying some constraints.
 We might want to guarantee it will have certain fields.
@@ -365,7 +363,7 @@ console.log(HelloWorld({ name: "Sonic" }))
 
 JSX Render Props
 
-Generics can also be used within React render props. This approach is used in Formik and React Router - Route.
+Generics can also be used within React render props. This approach is used in [Formik](https://formik.org/) and [React Router](https://reactrouter.com/) - Route.
 
 The big advantages are auto completion and type safety.
 
