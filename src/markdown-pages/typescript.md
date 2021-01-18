@@ -16,28 +16,28 @@ Writing types can be optional in TypeScript, because type inference allows you t
 
 #### Number, String and Boolean
 
-The three most common primative types used in TypeScript are `string`, `number` and `boolean`.
+The three most common primitive types used in TypeScript are `string`, `number` and `boolean`.
 
-These can be explicitly assigned or infered from usage.
+These can be explicitly assigned or inferred from usage.
 
 ```ts
-///Explictly assigned as a string
+///Explicitly assigned as a string
 const name: string = "Kitty Pryde"
 
 /// Inferred type of string from usage
 const codename = "Shadowcat"
 
-///Explictly assigned as a number
+///Explicitly assigned as a number
 const age: number = 28
 
-///Explictly assigned as a boolean
+///Explicitly assigned as a boolean
 const deceased: boolean = false
 
-///Explictly assigned as a string. Strings can be defined in single or double quotes or backticks. Within a template string embedded expressions are fine.
+///Explicitly assigned as a string. Strings can be defined in single or double quotes or backticks. Within a template string embedded expressions are fine.
 let introduction: string = `Hello, my name is ${name}. I'm ${age +
   1} years old next month.`
 
-///Explictly assigned as a number this would error as we are attempting to assign this to a string
+///Explicitly assigned as a number this would error as we are attempting to assign this to a string
 const shoeSize: number = "9"
 ```
 
@@ -70,7 +70,7 @@ xman = ["Havok", 16, false] // OK
 xman = [16, "Havok", false] // Error
 ```
 
-In this case when intialised incorrectly the 0th item would be a number which doesn't match the type definition of string.
+In this case when initialised incorrectly the 0th item would be a number which doesn't match the type definition of string.
 
 ### Enum
 
@@ -80,7 +80,7 @@ These can be numeric, string or heterogeneous (a mix of numeric and string value
 
 #### Numeric
 
-Numeric enums store string values as numebers. Unless otherwise defined these start with zero and increment by 1.
+Numeric enums store string values as numbers. Unless otherwise defined these start with zero and increment by 1.
 
 ```ts
 enum SecondGeneration {
@@ -118,9 +118,9 @@ SecondGeneration.Wolverine // returns 6
 SecondGeneration.Thunderbird // returns 9
 ```
 
-Susequent members are still incremented, so for this case Colossus = 4.
+Subsequent members are still incremented, so for this case Colossus = 4.
 
-We can also explictly assign each memeber a value, and these do not have to be unique or sequential.
+We can also explicitly assign each member a value, and these do not have to be unique or sequential.
 
 ```ts
 enum SecondGeneration {
