@@ -1,7 +1,7 @@
 {
   "name": "gatsby-blog",
   "private": true,
-  "description": "A simple Gatsby project",
+  "description": "Blogging along singing a song",
   "version": "0.1.0",
   "author": "Peter Williams <pnicholaswilliams@gmail.com>",
   "dependencies": {
