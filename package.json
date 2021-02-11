@@ -9,6 +9,7 @@
     "@mdx-js/react": "^1.6.16",
     "babel-plugin-styled-components": "^1.10.6",
     "env-cmd": "^10.1.0",
+    "framer-motion": "^3.3.0",
     "gatsby": "^2.19.12",
     "gatsby-image": "^2.2.29",
     "gatsby-plugin-mailchimp": "^5.2.2",
