@@ -6,7 +6,7 @@ import Image from "../image"
 describe("Image", () => {
   it("renders correctly", () => {
     const tree = renderer
-      .create(<Image/>)
+      .create(<Image alt="Gatsby in Space" filename="gatsby-astronaut.png" />)
       .toJSON()
     expect(tree).toMatchSnapshot()
   })

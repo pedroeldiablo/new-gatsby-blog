@@ -4,7 +4,7 @@ import { ViewportProvider, viewportContext } from '../context/viewportContext'
 
 import styled from 'styled-components'
 import Layout from '../components/layout'
-import Image from '../components/image'
+import HeroImage from '../components/HeroImage'
 import SEO from '../components/seo'
 import Profile from '../components/profile'
 
