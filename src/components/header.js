@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React, { useContext } from 'react'
 import { viewportContext} from '../context/viewportContext'
 import {useViewport} from '../hooks/useViewport'
-import Image from './image'
+import HeroImage from './HeroImage'
 import styled from 'styled-components'
 
 const HeaderStyles = styled.header`
@@ -48,7 +48,9 @@ const Header = ({ siteTitle }) => {
           {siteTitle}
         </Link>
       </h1>
-      <Image />
+      <HeroImage />
+      <div style={{ maxWidth: `300px` }}>
+</div>
     {/* </div> */}
   </HeaderStyles>
         }

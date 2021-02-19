@@ -104,5 +104,12 @@ exports[`Header renders correctly 1`] = `
       />
     </div>
   </div>
+  <div
+    style={
+      Object {
+        "maxWidth": "300px",
+      }
+    }
+  />
 </header>
 `;
