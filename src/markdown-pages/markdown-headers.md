@@ -1,11 +1,11 @@
 ---
-title: "Getting to Grips with Gatsby"
+title: "Markdown Mastery - Headers"
 date: "2019-11-26"
 ---
 
-### Getting to Grips with Gatsby
+### Markdown Mastery
 
-Will there ever be a day when I'm using Markdown sufficiently to remember the syntax without needing to look it up?
+Will there ever be a day when I'm using Markdown sufficiently to remember the syntax without needing to look it up? Possibly, but until then notes are essential companion.
 
 [Rewording the ever helpful cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)
 
@@ -33,7 +33,7 @@ Emphasis aka italics at a *to either*end of the word/phrase*without a gap betwee
 
 Strong/Bold add two \* or \_ instead of one.
 
-Need strong italics? Combine \*_ and \_ or \_\_ and _ as you would wrapping quotes.
+Need strong italics? Combine \*_and \_ or \_\_ and_ as you would wrapping quotes.
 
 Strikethrough by adding double tilde at the start and end.
 

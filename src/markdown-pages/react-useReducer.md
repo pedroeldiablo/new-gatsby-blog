@@ -1,5 +1,5 @@
 ---
-title: "React Hooks useReducer"
+title: "React Hooks - useReducer"
 date: "2020-02-29"
 description: "useReducer"
 ---
