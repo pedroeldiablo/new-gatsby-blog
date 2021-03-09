@@ -2,7 +2,7 @@
 
 exports[`Header renders correctly 1`] = `
 <header
-  className="sc-bdVaJa iWAvBx"
+  className="sc-bdVaJa eNqLc"
   style={
     Object {
       "filter": "hue-rotate(NaNrad)",

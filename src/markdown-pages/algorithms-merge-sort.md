@@ -45,7 +45,7 @@ function merge(arr1, arr2) {
   return results
 }
 
-// Recrusive Merge Sort
+// Recursive Merge Sort
 function mergeSort(arr) {
   if (arr.length <= 1) return arr
   let mid = Math.floor(arr.length / 2)
