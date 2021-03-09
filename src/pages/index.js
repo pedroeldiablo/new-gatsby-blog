@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link, graphql } from 'gatsby'
 import { ViewportProvider, viewportContext } from '../context/viewportContext'
 
@@ -7,6 +7,7 @@ import Layout from '../components/layout'
 import HeroImage from '../components/HeroImage'
 import SEO from '../components/seo'
 import Profile from '../components/profile'
+import {SearchBarComponent} from '../components/search-bar/search-bar.component'
 
 const BlogLink = styled(Link)`
   text-decoration: none;
@@ -66,13 +67,34 @@ const FlexColumn = styled(FlexArea)`
   height: fit-content;
 `;
 
-const HomePage = ({ data }) => (
+const HomePage = ({ data }) => {
+const [currentPage, setCurrentPage] = useState(1);
+const [searchValue, setSearchValue] = useState('');
+
+const filteredMdxPosts = data.allMdx.edges?.filter((post, idx) =>
+    post.node.frontmatter.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
+const filteredMarkdownRemarkPosts = data.allMarkdownRemark.edges?.filter((post, idx) =>
+  post.node.frontmatter.title.toLowerCase().includes(searchValue.toLowerCase())
+);
+
+
+console.log({filteredMdxPosts})
+console.log({filteredMarkdownRemarkPosts})
+
+return (
   <ViewportProvider>
   <Layout>
     <SEO title="Home" />
     <FlexArea>
       <FlexColumn>
-        {data.allMdx.edges.map(({ node }) => (
+      <SearchBarComponent
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        setCurrentPage={setCurrentPage}
+      />
+        {filteredMdxPosts.map(({ node }) => (
           <PostCard key={node.id}>
             <BlogLink to={node.slug}>
               <BlogTitle>
@@ -86,7 +108,7 @@ const HomePage = ({ data }) => (
             </PostDetails>
           </PostCard>
         ))}
-        {data.allMarkdownRemark.edges.map(({ node }) => (
+        {filteredMarkdownRemarkPosts.map(({ node }) => (
           <PostCard key={node.id}>
             <BlogLink to={node.fields.slug}>
               <BlogTitle>
@@ -110,6 +132,7 @@ const HomePage = ({ data }) => (
   </Layout>
   </ViewportProvider>
 )
+        }
 
 export const query = graphql`
   query {
