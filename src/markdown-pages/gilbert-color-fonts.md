@@ -9,7 +9,7 @@ date: "2019-12-03"
 
 The Gilbert font by Robyn Makinson, inspired by the design language of the Rainbow Flag and protest banners, was created in a partnership between NewFest, NYC Pride and Fontself.
 
-This is an OpenType SVG Color Font. Browsers that can't support it will show a fallback. 
+This is an OpenType SVG Color Font. Browsers that can't support it will show a fallback.
 
 [Taking this codepen as a source of inspiration](https://codepen.io/fontself/pen/rrdqrW)
 

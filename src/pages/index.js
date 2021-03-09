@@ -1,12 +1,13 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-import { ViewportProvider, viewportContext } from '../context/viewportContext'
+import React, { useState } from "react"
+import { Link, graphql } from "gatsby"
+import { ViewportProvider, viewportContext } from "../context/viewportContext"
 
-import styled from 'styled-components'
-import Layout from '../components/layout'
-import HeroImage from '../components/HeroImage'
-import SEO from '../components/seo'
-import Profile from '../components/profile'
+import styled from "styled-components"
+import Layout from "../components/layout"
+import HeroImage from "../components/HeroImage"
+import SEO from "../components/seo"
+import Profile from "../components/profile"
+import { SearchBarComponent } from "../components/search-bar/search-bar.component"
 
 const BlogLink = styled(Link)`
   text-decoration: none;
@@ -64,52 +65,74 @@ const FlexColumn = styled(FlexArea)`
   flex-direction: column;
   justify-content: flex-start;
   height: fit-content;
-`;
+`
 
-const HomePage = ({ data }) => (
-  <ViewportProvider>
-  <Layout>
-    <SEO title="Home" />
-    <FlexArea>
-      <FlexColumn>
-        {data.allMdx.edges.map(({ node }) => (
-          <PostCard key={node.id}>
-            <BlogLink to={node.slug}>
-              <BlogTitle>
-                {node.frontmatter.title}
-              </BlogTitle>
-            </BlogLink>
-            <p>{node.excerpt}</p>
-            <PostDetails>
-            <p>{node.frontmatter.date}</p>
-            <p>{node.timeToRead} min read</p>
-            </PostDetails>
-          </PostCard>
-        ))}
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-          <PostCard key={node.id}>
-            <BlogLink to={node.fields.slug}>
-              <BlogTitle>
-                {node.frontmatter.title}
-              </BlogTitle>
-            </BlogLink>
-            <p>{node.excerpt}</p>
-            <PostDetails>
-            <p>{node.frontmatter.date}</p>
-            <p>{node.timeToRead} min read</p>
-            </PostDetails>
-          </PostCard>
-        ))}
-        <PostCounter>
-          <h4>Posts: {data.allMarkdownRemark.totalCount}</h4>
-          <h4>Posts MDX: {data.allMdx.totalCount}</h4>
-        </PostCounter>
-      </FlexColumn>
-      <Profile />
-    </FlexArea>
-  </Layout>
-  </ViewportProvider>
-)
+const HomePage = ({ data }) => {
+  const [currentPage, setCurrentPage] = useState(1)
+  const [searchValue, setSearchValue] = useState("")
+
+  const filteredMdxPosts = data.allMdx.edges?.filter((post, idx) =>
+    post.node.frontmatter.title
+      .toLowerCase()
+      .includes(searchValue.toLowerCase())
+  )
+
+  const filteredMarkdownRemarkPosts = data.allMarkdownRemark.edges?.filter(
+    (post, idx) =>
+      post.node.frontmatter.title
+        .toLowerCase()
+        .includes(searchValue.toLowerCase())
+  )
+
+  console.log({ filteredMdxPosts })
+  console.log({ filteredMarkdownRemarkPosts })
+
+  return (
+    <ViewportProvider>
+      <Layout>
+        <SEO title="Home" />
+        <FlexArea>
+          <FlexColumn>
+            <SearchBarComponent
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+              setCurrentPage={setCurrentPage}
+            />
+            {filteredMdxPosts.map(({ node }) => (
+              <PostCard key={node.id}>
+                <BlogLink to={node.slug}>
+                  <BlogTitle>{node.frontmatter.title}</BlogTitle>
+                </BlogLink>
+                <p>{node.excerpt}</p>
+                <PostDetails>
+                  <p>{node.frontmatter.date}</p>
+                  <p>{node.timeToRead} min read</p>
+                </PostDetails>
+              </PostCard>
+            ))}
+            {filteredMarkdownRemarkPosts.map(({ node }) => (
+              <PostCard key={node.id}>
+                <BlogLink to={node.fields.slug}>
+                  <BlogTitle>{node.frontmatter.title}</BlogTitle>
+                </BlogLink>
+                <p>{node.excerpt}</p>
+                <PostDetails>
+                  <p>{node.frontmatter.date}</p>
+                  <p>{node.timeToRead} min read</p>
+                </PostDetails>
+              </PostCard>
+            ))}
+            <PostCounter>
+              <h4>Posts: {data.allMarkdownRemark.totalCount}</h4>
+              <h4>Posts MDX: {data.allMdx.totalCount}</h4>
+            </PostCounter>
+          </FlexColumn>
+          <Profile />
+        </FlexArea>
+      </Layout>
+    </ViewportProvider>
+  )
+}
 
 export const query = graphql`
   query {
@@ -132,22 +155,21 @@ export const query = graphql`
       }
     }
     allMdx {
-    edges {
-      node {
-        slug
-        id
-        frontmatter {
-          date
-          description
-          title
+      edges {
+        node {
+          slug
+          id
+          frontmatter {
+            date
+            description
+            title
+          }
+          timeToRead
+          excerpt
         }
-        timeToRead
-        excerpt
       }
+      totalCount
     }
-    totalCount
-  }
-
   }
 `
 export default HomePage
