@@ -1,7 +1,7 @@
-import React from "react"
-import { ViewportProvider, viewportContext } from "../context/viewportContext"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import React from 'react';
+import { ViewportProvider, viewportContext } from '../context/viewportContext';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 const NotFoundPage = () => (
   <ViewportProvider>
@@ -11,6 +11,6 @@ const NotFoundPage = () => (
       <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
     </Layout>
   </ViewportProvider>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;

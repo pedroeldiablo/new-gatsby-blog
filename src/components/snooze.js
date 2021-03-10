@@ -1,14 +1,14 @@
-import React, { useState } from "react"
+import React, { useState } from 'react';
 
 function SnoozeRemaining() {
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     const initialSnooze = () =>
-      Number(window.localStorage.getItem("snooze-preference") | 0)
-    const [timeRemaining, setTimeRemaining] = useState(initialSnooze)
+      Number(window.localStorage.getItem('snooze-preference') | 0);
+    const [timeRemaining, setTimeRemaining] = useState(initialSnooze);
     const incrementTimeRemaining = value => {
-      setTimeRemaining(previousRemaining => previousRemaining + value)
-    }
-    const cancelSnooze = () => setTimeRemaining(0)
+      setTimeRemaining(previousRemaining => previousRemaining + value);
+    };
+    const cancelSnooze = () => setTimeRemaining(0);
     return (
       <>
         <div>{timeRemaining}</div>
@@ -20,9 +20,9 @@ function SnoozeRemaining() {
         </button>
         <button onClick={() => cancelSnooze()}>Cancel snooze</button>
       </>
-    )
+    );
   }
-  return null
+  return null;
 }
 
-export default SnoozeRemaining
+export default SnoozeRemaining;

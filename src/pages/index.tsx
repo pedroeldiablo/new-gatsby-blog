@@ -1,17 +1,15 @@
-import React, { useState } from "react"
-import { Link, graphql } from "gatsby"
-import { ViewportProvider, viewportContext } from "../context/viewportContext"
-
-import styled from "styled-components"
-import Layout from "../components/layout"
-import HeroImage from "../components/HeroImage"
-import SEO from "../components/seo"
-import Profile from "../components/profile"
-import { SearchBarComponent } from "../components/search-bar/search-bar.component"
+import { graphql, Link } from 'gatsby';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Layout from '../components/layout';
+import Profile from '../components/profile';
+import { SearchBarComponent } from '../components/search-bar/search-bar.component';
+import SEO from '../components/seo';
+import { ViewportProvider } from '../context/viewportContext';
 
 const BlogLink = styled(Link)`
   text-decoration: none;
-`
+`;
 const GoToLink = styled(Link)`
   text-decoration: none;
   color: #7b00ff;
@@ -19,12 +17,12 @@ const GoToLink = styled(Link)`
   text-transform: uppercase;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-`
+`;
 
 const BlogTitle = styled.h3`
   margin-bottom: 20px;
   color: #ff0084;
-`
+`;
 
 const PostCounter = styled.div`
   display: inline-flex;
@@ -32,12 +30,12 @@ const PostCounter = styled.div`
   justify-content: center;
   gap: 2rem;
   width: 100%;
-`
+`;
 
 const PostCard = styled.div`
   padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
-`
+`;
 
 const PostDetails = styled.div`
   display: inline-flex;
@@ -45,7 +43,7 @@ const PostDetails = styled.div`
   justify-content: center;
   gap: 2rem;
   color: rgba(100, 100, 100, 1);
-`
+`;
 
 const FlexArea = styled.div`
   display: grid;
@@ -58,34 +56,34 @@ const FlexArea = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
-`
+`;
 
 const FlexColumn = styled(FlexArea)`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   height: fit-content;
-`
+`;
 
-const HomePage = ({ data }) => {
-  const [currentPage, setCurrentPage] = useState(1)
-  const [searchValue, setSearchValue] = useState("")
+const HomePage = ({ data }: { data: any }): JSX.Element => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchValue, setSearchValue] = useState('');
 
   const filteredMdxPosts = data.allMdx.edges?.filter((post, idx) =>
     post.node.frontmatter.title
       .toLowerCase()
       .includes(searchValue.toLowerCase())
-  )
+  );
 
   const filteredMarkdownRemarkPosts = data.allMarkdownRemark.edges?.filter(
     (post, idx) =>
       post.node.frontmatter.title
         .toLowerCase()
         .includes(searchValue.toLowerCase())
-  )
+  );
 
-  console.log({ filteredMdxPosts })
-  console.log({ filteredMarkdownRemarkPosts })
+  console.log({ filteredMdxPosts });
+  console.log({ filteredMarkdownRemarkPosts });
 
   return (
     <ViewportProvider>
@@ -131,8 +129,8 @@ const HomePage = ({ data }) => {
         </FlexArea>
       </Layout>
     </ViewportProvider>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query {
@@ -171,5 +169,5 @@ export const query = graphql`
       totalCount
     }
   }
-`
-export default HomePage
+`;
+export default HomePage;

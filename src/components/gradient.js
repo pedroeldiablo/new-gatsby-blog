@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react';
 
 const Gradient = () => (
   <div className="gradient-demo">
@@ -6,6 +6,6 @@ const Gradient = () => (
       <div className="gradient"></div>
     </div>
   </div>
-)
+);
 
-export default Gradient
+export default Gradient;

@@ -1,6 +1,6 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
 const HeroImage = () => {
   const data = useStaticQuery(graphql`
@@ -21,14 +21,14 @@ const HeroImage = () => {
         name
       }
     }
-  `)
+  `);
   // console.log('data', data.image.childImageSharp.fluid)
   return (
     <div>
       {/* <Img fluid={data.image.childImageSharp.fluid} /> */}
       <Img fixed={data.image.childImageSharp.fixed} />
     </div>
-  )
-}
+  );
+};
 
-export default HeroImage
+export default HeroImage;

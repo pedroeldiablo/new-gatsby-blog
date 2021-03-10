@@ -1,12 +1,12 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import { ViewportProvider, viewportContext } from "../context/viewportContext"
-import { MDXRenderer } from "gatsby-plugin-mdx"
+import React from 'react';
+import { graphql } from 'gatsby';
+import Layout from '../components/layout';
+import { ViewportProvider, viewportContext } from '../context/viewportContext';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-export default ({ data }) => {
-  const post = data.markdownRemark
-  const mdxPost = data.mdx
+export const BlogPost = ({ data }: { data: any }): JSX.Element => {
+  const post = data.markdownRemark;
+  const mdxPost = data.mdx;
   return (
     <ViewportProvider>
       <Layout>
@@ -25,8 +25,8 @@ export default ({ data }) => {
         </div>
       </Layout>
     </ViewportProvider>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query($slug: String!) {
@@ -43,4 +43,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
+
+export default BlogPost;
