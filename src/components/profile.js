@@ -1,6 +1,6 @@
-import React from "react"
-import styled from "styled-components"
-import Image from "./Image"
+import React from 'react';
+import styled from 'styled-components';
+import Image from './Image';
 
 const ProfileSection = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -10,7 +10,7 @@ const ProfileSection = styled.div`
   position: sticky;
   height: fit-content;
   top: 0;
-`
+`;
 
 const Profile = () => (
   <ProfileSection>
@@ -27,6 +27,6 @@ const Profile = () => (
       </div>
     </div>
   </ProfileSection>
-)
+);
 
-export default Profile
+export default Profile;

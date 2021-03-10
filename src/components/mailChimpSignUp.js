@@ -1,44 +1,44 @@
-import React, { useState, useEffect } from "react"
-import addToMailchimp from "gatsby-plugin-mailchimp"
+import React, { useState, useEffect } from 'react';
+import addToMailchimp from 'gatsby-plugin-mailchimp';
 
 export const MailChimpSignUp = () => {
-  const [email, setEmail] = useState("")
-  const [listFields, updateListFields] = useState({ FNAME: "", LNAME: "" })
+  const [email, setEmail] = useState('');
+  const [listFields, updateListFields] = useState({ FNAME: '', LNAME: '' });
 
   // `addToMailchimp` returns a promise
   // Note that you need to send an email & optionally, listFields
   // these values can be pulled from React state, form fields
 
   const handleChange = e => {
-    updateListFields({ ...listFields, [`${e.name}`]: e.value })
-  }
+    updateListFields({ ...listFields, [`${e.name}`]: e.value });
+  };
 
   // see form entries and updates in console for debugging
   useEffect(() => {
-    console.log("EMAIL", email)
-    console.log("newly updated", listFields)
-  })
+    console.log('EMAIL', email);
+    console.log('newly updated', listFields);
+  });
 
   const handleSubmit = async e => {
-    e.preventDefault()
-    console.log(email, listFields)
+    e.preventDefault();
+    console.log(email, listFields);
     const result = await addToMailchimp(email, listFields)
       .then(({ msg, result }) => {
-        console.log("msg", `${result}: ${msg}`)
+        console.log('msg', `${result}: ${msg}`);
 
-        if (result !== "success") {
-          throw msg
+        if (result !== 'success') {
+          throw msg;
         }
-        alert(msg)
+        alert(msg);
       })
       .catch(err => {
-        console.log("err", err)
-        alert(err)
-      })
-    console.log(result)
+        console.log('err', err);
+        alert(err);
+      });
+    console.log(result);
     // I recommend setting `result` to React state
     // but you can do whatever you want
-  }
+  };
 
   return (
     <form
@@ -66,8 +66,8 @@ export const MailChimpSignUp = () => {
             id="mce-EMAIL"
             value={email}
             onChange={e => {
-              setEmail(e.target.value)
-              console.log(email)
+              setEmail(e.target.value);
+              console.log(email);
             }}
           ></input>
         </div>
@@ -78,7 +78,7 @@ export const MailChimpSignUp = () => {
             name="FNAME"
             className=""
             id="mce-FNAME"
-            value={listFields["FNAME"]}
+            value={listFields['FNAME']}
             onChange={e => handleChange(e.target)}
           ></input>
         </div>
@@ -89,7 +89,7 @@ export const MailChimpSignUp = () => {
             name="LNAME"
             className=""
             id="mce-LNAME"
-            value={listFields["LNAME"]}
+            value={listFields['LNAME']}
             onChange={e => handleChange(e.target)}
           ></input>
         </div>
@@ -102,7 +102,7 @@ export const MailChimpSignUp = () => {
             type="text"
             name="b_b4b54af180d24c229a5ee6172_4635aac635"
             tabIndex="-1"
-            value={listFields["b_b4b54af180d24c229a5ee6172_4635aac635"]}
+            value={listFields['b_b4b54af180d24c229a5ee6172_4635aac635']}
             onChange={e => handleChange(e.target)}
           ></input>
         </div>
@@ -117,7 +117,7 @@ export const MailChimpSignUp = () => {
         </div>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default MailChimpSignUp
+export default MailChimpSignUp;

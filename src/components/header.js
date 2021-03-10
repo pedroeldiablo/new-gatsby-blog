@@ -1,10 +1,9 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React, { useContext } from "react"
-import { viewportContext } from "../context/viewportContext"
-import { useViewport } from "../hooks/useViewport"
-import HeroImage from "./HeroImage"
-import styled from "styled-components"
+import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { viewportContext } from '../context/viewportContext';
+import HeroImage from './HeroImage';
 
 const HeaderStyles = styled.header`
   max-width: 960px;
@@ -17,13 +16,13 @@ const HeaderStyles = styled.header`
   @media (max-width: 768px) {
     grid-template-columns: 100%;
   }
-`
+`;
 
 const Header = ({ siteTitle }) => {
   // console.log("What is useV", useViewport().width)
-  const cCon = useContext(viewportContext)
-  const currentColor = cCon.width / 255
-  const hueRotation = `hue-rotate(${currentColor}rad)`
+  const cCon = useContext(viewportContext);
+  const currentColor = cCon.width / 255;
+  const hueRotation = `hue-rotate(${currentColor}rad)`;
 
   return (
     <HeaderStyles style={{ filter: `${hueRotation}` }}>
@@ -51,15 +50,15 @@ const Header = ({ siteTitle }) => {
       <div style={{ maxWidth: `300px` }}></div>
       {/* </div> */}
     </HeaderStyles>
-  )
-}
+  );
+};
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-}
+};
 
 Header.defaultProps = {
   siteTitle: ``,
-}
+};
 
-export default Header
+export default Header;
